@@ -1,0 +1,2 @@
+localhost ansible_connection=localhost nameserver_ip=10.1.250.10
+anstarget ansible_host=192.168.1.7 nameserver_ip=10.1.250.10 snmp_port=160-161

@@ -1,0 +1,9 @@
+-
+  name: create user
+  hosts: all
+  tasks:
+    - name: adding user
+      user:
+        name: girish123
+        shell: /bin/bash
+      become: true

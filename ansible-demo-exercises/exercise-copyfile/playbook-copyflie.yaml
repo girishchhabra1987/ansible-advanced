@@ -1,0 +1,8 @@
+-
+  name: copy file to remote
+  hosts: all
+  tasks:
+    - name: Copyfile
+      copy:
+        src: /tmp/test.sh
+        dest: /tmp/

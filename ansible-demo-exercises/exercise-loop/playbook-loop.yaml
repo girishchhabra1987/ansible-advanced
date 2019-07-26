@@ -1,0 +1,12 @@
+-
+  name: Print list
+  hosts: all
+  tasks:
+    - name: print list task
+      command: echo '{{ item }}'
+      register: out
+
+      with_items:
+        - apple
+        - mango
+        - chiku

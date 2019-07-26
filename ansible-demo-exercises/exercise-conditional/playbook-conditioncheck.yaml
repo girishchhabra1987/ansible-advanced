@@ -1,0 +1,14 @@
+-
+  name: Print /etc/resolv.conf
+  hosts: anstarget
+  vars:
+    out: ""
+  tasks:
+    - name: use shell command
+      command: cat /etc/resolv.conf
+      register: out
+    - debug: msg=out.stdout_lines
+
+    - name: check lineinfile
+      shell: echo "nameserver 10.0.250.10" >> /etc/resolv.conf
+      when: out.stdout.find('10.0.250.10') == -1

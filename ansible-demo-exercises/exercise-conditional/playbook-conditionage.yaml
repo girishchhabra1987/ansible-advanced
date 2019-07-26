@@ -1,0 +1,12 @@
+-
+  name: Print age based on variable
+  hosts: all
+  vars:
+    age: 25
+  tasks:
+    - name: updating conf file
+      command: echo "I am a child"
+      when:  age  < '25'
+    -
+     command: echo "I am adult"
+     when: age  > '25'

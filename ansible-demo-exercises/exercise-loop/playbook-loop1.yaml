@@ -1,0 +1,14 @@
+-
+  name: Install applications
+  hosts: all
+  tasks:
+    - name: install applications
+      yum:
+        name: "{{ item }}"
+        state: present
+  with_items:
+        - httpd
+        - binutils
+        - gcc
+        - nodejs
+        - mongodb

@@ -1,0 +1,18 @@
+-
+  name: use fileinline module
+  hosts: all
+  tasks:
+    - name: use fileinline module
+      lineinfile:
+        path: /tmp/test.txt
+        regexp: whoami
+        line: date
+    - name: adding another line in file
+      lineinfile:
+        path: /tmp/test.txt
+        line: whoami
+    - name: adding user
+      user:
+        name: girish123
+        shell: /bin/bash
+        groups: wheel

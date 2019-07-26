@@ -1,0 +1,6 @@
+- name: Use roles to deploy webapp
+  hosts: web_and_db_servers
+  roles:
+    - python
+    - mysql_db
+    - flask_web

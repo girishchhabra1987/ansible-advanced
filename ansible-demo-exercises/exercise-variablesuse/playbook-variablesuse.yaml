@@ -1,0 +1,25 @@
+-
+  name: Update /etc/resolv.conf file on localhost using variable
+  hosts: anstarget
+  vars:
+    car_model: "BMW_model"
+    car_type: "hatchback"
+    car_year: "2019"
+  tasks:
+    - name: updating conf file
+      lineinfile:
+        path: /etc/resolv.conf
+        line: 'nameserver {{ nameserver_ip }}'
+      register: out
+  #  - name: disable sname port
+  #    firewalld:
+  #      port: '{{ snmp_port }}'
+  #      permanent: yes
+  #      state: disabled
+    - name : run the command echo
+      command: echo "my car model is {{ car_model }} its type is {{ car_type }} and its of year {{ car_year }}"
+      register: cout
+
+    - debug: msg="{{ cout.stdout }}"
+    - debug: msg="{{ cout.stderr }}"
+  

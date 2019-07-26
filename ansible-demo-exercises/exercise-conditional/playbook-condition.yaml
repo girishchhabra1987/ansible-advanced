@@ -1,0 +1,27 @@
+-
+  name: Update /etc/resolv.conf file on localhost using variable
+  hosts: all
+  vars:
+    car_model: "BMW_model"
+    car_type: "hatchback"
+    car_year: "2019"
+    cout: ""
+  tasks:
+
+    - name: updating conf file
+      lineinfile:
+        path: /etc/resolv.conf
+        line: 'nameserver {{ nameserver_ip }}'
+      when: ansible_host == 'anstarget'
+  #  - name: disable sname port
+  #    firewalld:
+  #      port: '{{ snmp_port }}'
+  #      permanent: yes
+  #      state: disabled
+    - name : run the command echo
+      command: echo "my car model is {{ car_model }} its type is {{ car_type }} and its of year {{ car_year }}"
+      register: cout
+      when: ansible_host == '192.168.43.60'
+
+    - debug: msg="{{ cout }}"
+    #- debug: msg="{{ cout.stderr }}"
